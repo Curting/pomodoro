@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	function display() {
 		// Display countdown
 		pomodoroTimer.innerHTML = minutes(count) + ":" + seconds(count);
-		document.title = pomodoroTimer.innerHTML + " – Pomodoro Timer"
+		document.title = pomodoroTimer.innerHTML + " – 🍅 Pomodoro Timer"
 		// Display total pomodoros
 		document.getElementById('pomodoros').innerHTML = pomoCount;
 	};
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		display();
 		if (count == 0) {
 			// Time is up
-			document.title ="🚨 Time is up! – Pomodoro Timer"
+			document.title ="🚨 Time is up! – 🍅 Pomodoro Timer"
 			stopButton.classList.toggle("hidden");
 			alarm.play();
 
