@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	function display() {
 		// Display countdown
 		pomodoroTimer.innerHTML = minutes(count) + ":" + seconds(count);
-		document.title = "Pomodoro Timer - " + pomodoroTimer.innerHTML
+		document.title = pomodoroTimer.innerHTML + " – Pomodoro Timer"
 		// Display total pomodoros
 		document.getElementById('pomodoros').innerHTML = pomoCount;
 	};
