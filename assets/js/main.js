@@ -1,17 +1,21 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
 
-	const DURATION = 25 * 60;
-	const BREAK_DURATION = 5 * 60;
+	var DURATION = 25 * 60;
+	var BREAK_DURATION = 5 * 60;
 	var t = undefined;
 	var count = DURATION;
 	var pomoCount = 0;
 
 	var onBreak = true;
+	var onDemo = false;
 
 	var startButton = document.getElementById('startButton');
 	var stopButton = document.getElementById('stopButton');
 	var pomodoroTimer = document.getElementById('pomodoroTimer')
 	var status = document.getElementById('status')
+	var demo = document.getElementById('demo')
+
+	var alarm = new Audio('assets/sounds/alarm.mp3');
 
 	display();
 
@@ -50,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			// Time is up
 			document.title ="🚨 Time is up! – Pomodoro Timer"
 			stopButton.classList.toggle("hidden");
+			alarm.play();
 
 			if (onBreak == false) {
 				breakButton.classList.toggle("hidden");
@@ -101,6 +106,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		// Reset countdown
 		reset(BREAK_DURATION);
 		countdown();
+	})
+	demo.addEventListener('click', function() {
+		if (onDemo == false) {
+			// I know constants shouldn't change. Sorry! :-|
+			DURATION = 6;
+			BREAK_DURATION = 3;
+			count = DURATION;
+			display();
+			demo.innerHTML = "« Go back to normal time durations"
+		} else {
+			DURATION = 25 * 60;
+			BREAK_DURATION = 5 * 60;
+			count = DURATION;
+			display();
+			demo.innerHTML = "Try demo with shorter time durations »"
+		}
+		onDemo = !onDemo;
 	})
 
 });
